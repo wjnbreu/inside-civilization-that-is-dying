@@ -1,0 +1,40 @@
+// -------------------------------------------------
+//
+// Base
+// 
+// -------------------------------------------------
+
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::selection{
+	background: $text;
+	color: $background;
+}
+
+
+img{
+	border: 0;
+	outline: 0;
+}
+
+
+
+html{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background: $background;
+	position: relative;
+	overflow-x: hidden;
+}

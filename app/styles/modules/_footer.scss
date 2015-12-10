@@ -1,0 +1,126 @@
+// -------------------------------------------------
+//
+// Footer
+// 
+// -------------------------------------------------
+footer{
+	width: 90%;
+	color: black;
+	font-family: 'maison', Helvetica, Arial;
+	margin-top: 10em;
+	margin-left: 5%;
+	img.footer-logo{
+		width: 90%;
+		margin-left: 5%;
+		@include mq("medium"){
+			width: 75%;
+			margin-left: 12.5%;
+		}
+		@include mq("large"){
+			width: 60%;
+			margin-left: 20%;
+		}
+		
+	}
+	.footer-title{
+		text-align: center;
+		font-family: 'ClanPro';
+		font-size: 1.25em;
+		@include mq("medium"){
+			font-size: 2em;
+		}
+		@include mq("large"){
+			font-size: 3em;
+		}
+	}
+	p.footer-text{
+		text-align: center;
+		
+		margin-top: 0;
+		line-height: 1.5;
+		font-size: 0.95em;
+		font-family: 'maison' !important;
+		@include mq("large"){
+			font-size: 1.3em;
+		}
+	}
+	.sitemap{
+		text-align: center;
+		margin-bottom: 4em;
+		zoom: 1;
+		.cell{
+			vertical-align: top;
+			margin: 50px 0;
+			@include mq("large"){
+				vertical-align: top;
+				padding-right: 2em;
+				padding-left: 2em;
+				display: inline-block;
+				width: 33.3333333%;
+				margin: 0 auto 2em auto;
+				max-width: 16.25rem;
+			}
+			.link{
+				font-size: 0.75em;
+				margin: 10px 0;
+				opacity: 0.6;
+				a{
+					text-decoration: none;
+				}
+				&:first-child{
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.footer-social{
+		margin-bottom: 1.5em;
+		a{
+			display: inline-block;
+			margin-left: .25em;
+			margin-right: .25em;
+			text-decoration: none;
+			color: inherit;
+			.social-icon{
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				&.facebook{
+					background: url(../images/footer-facebook.svg) no-repeat center center;
+				}
+				&.twitter{
+					background: url(../images/footer-twitter.svg) no-repeat center center;
+				}
+				&.youtube{
+					background: url(../images/footer-youtube.svg) no-repeat center center;
+				}
+				&.vimeo{
+					background: url(../images/footer-vimeo.svg) no-repeat center center;
+				}
+				&.tumblr{
+					background: url(../images/footer-tumblr.svg) no-repeat center center;
+				}
+				&.soundcloud{
+					background: url(../images/footer-soundcloud.svg) no-repeat center center;
+				}
+				&.instagram{
+					background: url(../images/footer-instagram.svg) no-repeat center center;
+				}
+			}
+		}
+	}
+	.footer-legal{
+		opacity: 0.6;
+		p{
+			font-family: 'maison' !important;
+			font-size: 0.75em;
+			span{
+				margin: 0 auto 0 5px;
+				a{
+					text-decoration: none;
+					color: inherit;
+				}
+			}
+		}
+	}
+}
