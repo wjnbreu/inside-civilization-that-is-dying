@@ -1,7 +1,8 @@
 'use strict';
 
 
-const Track = require('./components/audio');
+// const Track = require('./components/audio');
+const Audio = require('./components/controls');
 
 
 class Piece {
@@ -13,7 +14,9 @@ class Piece {
 
 
 	init(){
-		let track = new Track();
+		// let track = new Track();
+		let audio = new Audio();
+		audio.init();
 	}
 }
 
