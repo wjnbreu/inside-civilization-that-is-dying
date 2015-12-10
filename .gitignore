@@ -3,3 +3,4 @@ build
 env.json
 keys.json
 .env
+app/audio
