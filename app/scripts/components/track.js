@@ -10,11 +10,12 @@ const q = require('q');
 
 class Track {
 
-	constructor(name, mp3, id, ctx){
+	constructor(name, mp3, id, ctx, domElement){
 		this.name = name || null;
 		this.src = mp3 || null;
 		this.id = id || null;
 		this.ctx = ctx || null;
+		this.domElement = domElement || null;
 
 		this.buf = null;
 
@@ -60,6 +61,10 @@ class Track {
 					loadTarget.remove();
 				}
 
+				//init all properties
+				self.init();
+
+				
 				deferred.resolve(self.buf);
 				
 			});
@@ -76,13 +81,57 @@ class Track {
 
 
 	// ------------------------------------------------
-	// Play Method
+	// Listen for clicks on artist
 	//
-	play(pos){
-
+	bindClicks(){
 		let self = this;
 
-		pos = pos || 0;
+		if (self.domElement !== null){
+			self.domElement.addEventListener('click', function(){
+				self.onClick();
+			}, false);
+		}
+
+		console.log(self.domElement);
+
+	}
+
+
+	// ------------------------------------------------
+	// On Click
+	//
+	onClick(){
+
+		// ------------------------------------------------
+		// Need to loop through on any player click and 
+		// find out which tracks are playing
+		// If none are selected, boost volume of ref track
+		//
+
+		//turn down
+		if (this.volume === 1){
+			this.gainNode.gain.value = 0.15;
+			this.volume = 0.15;
+			this.domElement.classList.add('down');
+			this.domElement.classList.remove('up');
+
+		}
+
+		else{
+			this.gainNode.gain.value = 1;
+			this.volume = 1;
+			this.domElement.classList.add('up');
+			this.domElement.classList.remove('down');
+		}
+
+	}
+
+
+
+	init(){
+		let self = this;
+
+
 
 		//set up new buffersource
 		self.bufferSource = self.ctx.createBufferSource();
@@ -101,8 +150,29 @@ class Track {
 		//connect gain node to speakers
 		self.gainNode.connect(self.ctx.destination);
 
+
+		if (this.id === 'ref'){
+			this.volume = 0.33;
+			this.gainNode.gain.value = 0.33;
+		}
+
+		//listen for clicks
+		self.bindClicks();
+
+	}
+
+
+	// ------------------------------------------------
+	// Play Method
+	//
+	play(pos){
+
+		let self = this;
+
+		pos = pos || 0;
+
 		//start buffer
-		self.bufferSource.start(0);
+		self.bufferSource.start(pos);
 
 		self.muted = false;
 

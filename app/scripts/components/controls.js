@@ -52,6 +52,7 @@ class Audio {
 		// Set up play/mute button
 		//
 		this.startStopButton = document.getElementById('play');
+
 		this.startStopButton.addEventListener('click', function(ev){
 			if (self.currentlyPlaying){
 				self.muteSounds();
@@ -60,6 +61,15 @@ class Audio {
 				self.startSounds();
 			}
 		});
+
+
+
+		
+		
+
+
+
+		
 		
 		// ------------------------------------------------
 		// Test to see if audio context is valid
@@ -132,12 +142,16 @@ class Audio {
 			// passing in track name, mp3 src, id, and 
 			// reference to global Audio context
 			//
+
+			let item = document.getElementById('item-' + self.trackData[i].id);
+
 			
 			let stem = new Track(
 				self.trackData[i].name,
 				self.trackData[i].mp3,
 				self.trackData[i].id,
-				self.ctx
+				self.ctx,
+				item
 			);
 
 			// ------------------------------------------------

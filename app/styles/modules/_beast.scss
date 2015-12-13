@@ -15,16 +15,17 @@
 		overflow: hidden;
 		cursor: pointer;
 		position: relative;
+		-webkit-blend-mode: 'difference';
+		@include transition(opacity 0.2s linear);
+		&.up{
+			opacity: 1;
+		}
+		&.down{
+			opacity: 0.5;
+		}
 		img{
 			height: 100%;
 			width: auto;
-			opacity: 0.6;
-			&.playing{
-				opacity: 1;
-			}
-			&:hover{
-				opacity: 1;
-			}
 		}
 		.loader{
 			background: url(../images/loader.svg) no-repeat center center;
