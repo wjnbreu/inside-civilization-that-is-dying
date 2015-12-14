@@ -16,8 +16,10 @@
 		@include flex-direction(column);
 		@include align-items(center);
 		@include justify-content(center);
+		cursor: pointer;
 		h1{
 			//text-decoration: underline;
+			@include transform(scaleY(4));
 		}
 		
 
@@ -25,8 +27,15 @@
 
 	.speaker{
 		h2{
+			background: $text;
+			color: $background;
+			padding: 20px 0;
+			text-align: center;
 			@include uppercase();
-			text-decoration: underline;
+			margin: 70px 0;
+			font-family: 'Times New Roman', serif;
+			@include transform(scaleY(2.5));
+			letter-spacing: 2px;
 		}
 	}
 

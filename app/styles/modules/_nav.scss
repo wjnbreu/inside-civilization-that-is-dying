@@ -4,7 +4,6 @@
 // 
 // -------------------------------------------------
 nav.main-nav{
-    box-shadow: 0 0 8px rgba(0,0,0,.2);
     font-family: 'ClanPro';
     height: 50px;
     display: block;
@@ -12,16 +11,16 @@ nav.main-nav{
     @include flex-direction(row);
     @include align-items(center);
     @include justify-content(center);
-    border-bottom: 1px white;
     color: $text;
-    z-index: 999;
+    color: white;
     font-size: 1.5em;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: $background;
+    z-index: 9;
     @include fast();
+    mix-blend-mode: difference;
     .logo{
         width: 60px;
         height: 30px;
@@ -38,6 +37,7 @@ nav.main-nav{
         display: none;
         text-decoration: none;
         @include uppercase();
+        
         @include mq("medium"){
             display: block;
         }

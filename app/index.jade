@@ -67,34 +67,48 @@ html(lang="en")
 		//- Audio player			
 		.audio#audio
 			.controls
-				.play#play
+				.play.off#play
 			.instructions
 				p.
 					Click play to listen to track. Click individual players above to listen to their contributions.
+
+			.range#range
+				input#slider(type="range", value="0")
+			
 			.timer#timer
 
 		//-Image left panel
 		.beast
 			.top
-				.player.jamal#item-jamal(data-name="jamal")
-					img(src="images/jamal_moss.jpg")
+				.player.jamal#item-jamal(data-name="jamal",
+					data-fullname="Jamal Moss",
+					style="background-image: url('images/jamal_moss.jpg')",
+					data-anchor="anchor-jamal")
 					.loader#jamal
 
-				.player.shelley#item-shelley(data-name="shelley")
-					img(src="images/shelley_hirsch.jpg")
+				.player.shelley#item-shelley(data-name="shelley",
+					data-fullname="Shelley Hirsch",
+					style="background-image: url('images/shelley_hirsch.jpg')",
+					data-anchor="anchor-shelley")
 					.loader#shelley
 			
 			.bottom
-				.player.greg#item-greg(data-name="greg")
-					img(src="images/greg_fox.jpg")
+				.player.greg#item-greg(data-name="greg",
+					data-fullname="Greg Fox",
+					style="background-image: url('images/greg_fox.jpg')",
+					data-anchor="anchor-greg")
 					.loader#greg
 
-				.player.ben#item-ben(data-name="ben")
-					img(src="images/ben_vida.jpg")
+				.player.ben#item-ben(data-name="ben",
+					data-fullname="Ben Vida",
+					style="background-image: url('images/ben_vida.jpg')",
+					data-anchor="anchor-ben")
 					.loader#ben
 
-				.player.daniel#item-daniel(data-name="daniel")
-					img(src="images/daniel_carter.jpg")
+				.player.daniel#item-daniel(data-name="daniel",
+					data-fullname="Daniel Carter",
+					style="background-image: url('images/daniel_carter.jpg')",
+					data-anchor="anchor-daniel")
 					.loader#daniel
 
 		//- Main text right panel
@@ -106,11 +120,18 @@ html(lang="en")
 
 			.into
 				p.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae rutrum nulla, sit amet lobortis orci. Vivamus rutrum risus eu enim consectetur mattis. Morbi aliquam eu velit in consectetur. Aliquam sed ligula hendrerit, venenatis ipsum id, accumsan ipsum. Mauris enim diam, efficitur sed posuere aliquam, eleifend sed felis. Fusce molestie tortor purus, id aliquam orci bibendum sed. Proin tristique velit id tincidunt tincidunt.
+					<strong>Hieroglyphic Being & J.I.T.U. Ahn-Sahm-Bul’s <em>We Are Not The First</em> LP, which came out in October this year on New York’s RVNG Intl., is a testament to the improvisational pathways forged at the intersection of humans and machines. Standing in the shadow of Sun Ra, it pushes spiritual jazz in gloriously messy directions. The title is explicitly meant to pay tribute to musical forebearers, but the Ahn-Sahm-Bul itself represents a supergroup of sorts. It includes flute and sax polymath Elliot Levin, prolific player Daniel Carter of Test, drummer Greg Fox of Liturgy and Zs, spoken-word force Rafael Sanchez, nomadic guitarist/bassist Shahzad Ismaily, modular maven Ben Vida, ethereal vocalist Shelley Hirsch and Marshall Allen, a titanic figure in free jazz and original member of Sun Ra’s Arkestra whose mere presence further blesses the proceedings.</strong>
 
-					Nullam venenatis massa tempor fringilla aliquam. Suspendisse ex magna, sagittis in mauris faucibus, commodo cursus ex. Sed maximus enim a risus maximus ullamcorper. Praesent scelerisque vitae lacus a efficitur. Proin et massa aliquet, facilisis nisi interdum, gravida quam. Etiam sed leo sagittis, efficitur dolor eget, ultrices nulla. Curabitur in ipsum nec metus sollicitudin gravida. In vulputate sollicitudin dolor. Sed mollis ante rutrum auctor blandit. Ut elementum metus a tortor suscipit sagittis. Mauris condimentum mi sit amet rhoncus lobortis. Mauris imperdiet porta blandit. Etiam tincidunt finibus scelerisque. Duis maximus dui neque. Aliquam ut leo est. Cras venenatis condimentum dolor, nec venenatis neque rhoncus sed.
+				p.
+					The center of the storm is Hieroglyphic Being, earth name Jamal Moss, whose desiccated loops and chaotic electronics glue together the project’s divergent genres into a cohesive piece. “Civilization That Is Dying” is the sound of the Ahn-Sahm-Bul in prime form - powerful yet meditative, referential but not obsequious. It takes a few listens, but this is ultimately quicksand you want to sink into.
 
-			.speaker
+				p.
+					Now you can hear members of the ensemble stand out in the maelstrom and read how these distinct creative minds found a common language. Below, stream “Civilization That Is Dying” and click the images of the performers to hear their standalone parts. Click names to jump to interviews with the individual players on the project and their contributions, or scroll to read all interviews.
+
+				p.
+					Interviews have been edited and condensed for clarity. 
+
+			.speaker(id="anchor-jamal")
 				h2 Jamal Moss
 
 				.question Can you talk about how the project was initially pitched to you?
@@ -163,7 +184,7 @@ html(lang="en")
 					The only limitation that would come about with me working with them is the fact that we didn't have time to practice or rehearse or dig deeper to go really out there. That was the only limitation, because there was only time allotted for a certain period of time to get certain things done. It ain't like we gig together. It ain't like we went out and jammed together to get a synergistic feel, to be really intrinsic, we're taking the project to a deeper level. I think the way the project is is not bad for a first go-around.
 
 
-			.speaker
+			.speaker#anchor-ben
 				h2 Ben Vida
 
 				.question.
@@ -198,7 +219,7 @@ html(lang="en")
 				p.
 					One thing that was communicated really clearly, both by Matt but definitely by Jamal, was that he was excited that this was a collaborative effort. Though the Ahn-Sahm-Bul wasn't going to get the chance to play all together in the studio at one time, it was a collection, an ensemble, and a collaborative effort. He was very interested in foregrounding that and making sure that it was really clear who was contributing and that it was this larger group mind that was forming these tracks.
 
-			.speaker
+			.speaker#anchor-shelley
 				h2 Shelley Hirsch
 
 				.question.
@@ -225,7 +246,7 @@ html(lang="en")
 				p.
 					It was such a long time since I'd heard the initial session that I can't tell. I really appreciate what they did, but I recognized that it was different than what I'd sung. I’m curious to see what happens if and when we perform the material, because that'll feel very different.
 
-			.speaker
+			.speaker#anchor-greg
 				h2 Greg Fox
 
 				.question.
@@ -256,7 +277,7 @@ html(lang="en")
 					I appreciate it. I can't claim any of it as being mine because, like I said, I was just brought in to play. I take my craft seriously, and sometime’s I’m in the driver’s seat and sometimes I’m just the drummer. I’m really happy with both situations depending on the clarity and level of communication that’s at play and in this case I think it was actually really successful.
 
 
-			.speaker
+			.speaker#anchor-daniel
 				h2 Daniel Carter
 
 				.question.

@@ -15,14 +15,31 @@
 		overflow: hidden;
 		cursor: pointer;
 		position: relative;
-		-webkit-blend-mode: 'difference';
-		@include transition(opacity 0.2s linear);
-		&.up{
+		opacity:0.8;
+		@include transition(all 0.2s linear);
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-blend-mode: multiply;
+		&.solo{
+			background-blend-mode: screen;
+		}
+		&:hover{
 			opacity: 1;
 		}
-		&.down{
-			opacity: 0.5;
+		&:after{
+			content: attr(data-fullname);
+			width: 100%;
+			height: 100%;
+			@include display(flex);
+			@include align-items(center);
+			@include justify-content(center);
+			color: $text;
+			position: absolute;
+			font-size: 1em;
+			@include transform(scaleY(2));
 		}
+
 		img{
 			height: 100%;
 			width: auto;

@@ -80,9 +80,10 @@
 // -------------------------------------------------
 
 body{
-	font-family: 'Portrait', 'maison', Helvetica, Arial, sans-serif;
+	font-family: 'Portrait', 'Times New Roman', serif;
 	color: $text;
 	font-size: 16px;
+    -webkit-font-smoothing: antialiased;
 }
 h1,h2,h3,h4,h5{
 	margin: 0;
@@ -91,7 +92,10 @@ h1,h2,h3,h4,h5{
 }
 
 h1{
-	font-family: 'CloisterBlack';
+	font-family: 'Portrait', 'Times New Roman', serif;
+    font-weight: normal;
+    @include uppercase();
+    @include transform(scaleY(2.5));
 }
 
 

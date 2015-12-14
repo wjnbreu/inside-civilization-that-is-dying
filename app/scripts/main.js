@@ -1,6 +1,6 @@
 'use strict';
 
-
+const $ = require('jquery');
 // const Track = require('./components/audio');
 const Audio = require('./components/controls');
 
@@ -17,6 +17,12 @@ class Piece {
 		// let track = new Track();
 		let audio = new Audio();
 		audio.init();
+
+		$('.title').on('click', function(){
+			$('html,body').animate({
+				scrollTop: $(window).height() - 100
+			},500);
+		})
 	}
 }
 
