@@ -217,8 +217,8 @@ class Track {
 
 
 		if (this.id === 'ref'){
-			this.volume = 0.2;
-			this.gainNode.gain.value = 0.2;
+			this.volume = 0.33;
+			this.gainNode.gain.value = 0.33;
 		}
 
 		//listen for clicks

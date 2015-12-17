@@ -15,6 +15,8 @@ class Piece {
 
 	init(){
 
+		let self = this;
+
 		let md = new MobileDetect(window.navigator.userAgent);
 
 		if (md.mobile()){
@@ -32,11 +34,9 @@ class Piece {
 					scrollTop: $(window).height() - 100
 				},500);
 			});
-
 		}
-
-		
 	}
+
 }
 
 

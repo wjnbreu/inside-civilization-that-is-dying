@@ -3,6 +3,7 @@
 	
 	width: 90%;
 	margin: auto 5%;
+	position: relative;
 	@include mq("large"){
 		position: relative;
 		width: 55%;

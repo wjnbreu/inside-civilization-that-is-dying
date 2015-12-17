@@ -13,7 +13,7 @@ nav.main-nav{
     @include justify-content(center);
     color: $text;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.2em;
     position: fixed;
     top: 0;
     left: 0;
@@ -36,7 +36,6 @@ nav.main-nav{
     .text{
         display: none;
         text-decoration: none;
-        @include uppercase();
         
         @include mq("medium"){
             display: block;
