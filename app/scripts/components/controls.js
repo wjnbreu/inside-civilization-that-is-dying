@@ -4,6 +4,7 @@
 const async = require('async');
 const Track = require('./track');
 const $ = require('jquery');
+const Events = require('./pubsub');
 
 
 // -------------------------------------------------
@@ -47,11 +48,14 @@ class Audio {
 		//timer interval
 		this.interval = null;
 
-		//slider
-		this.slider = $('#slider');
-
 		//timer element
 		this.timerElement = null;
+
+		//current time in seconds
+		this.currentTime = 0;
+
+		//global mute
+		this.allMuted = false;
 
 		
 
@@ -72,19 +76,6 @@ class Audio {
 		
 		this.domElements = $('.player');
 
-		this.slider.on('mousedown', function(ev){
-			self.onSliderMouseDown(ev);
-		});
-
-		
-
-		// ------------------------------------------------
-		// Release
-		//
-		
-		this.slider.on('mouseup', function(ev){
-			self.onSliderMouseUp(ev);
-		});
 
 		this.startStopButton.on('click', function(ev){
 			if (self.currentlyPlaying){
@@ -207,6 +198,11 @@ class Audio {
 			// ------------------------------------------------
 			// All tracks loaded son!
 			//
+
+			//send message
+			Events.pubsub.emit('tracks:loaded', 'loaded');
+
+
 			// ------------------------------------------------
 			// Show audio control bar
 			//
@@ -234,7 +230,6 @@ class Audio {
 	startSounds(pos){
 		let self = this;
 
-		console.log(pos);
 
 		let position = pos || self.currentPos;
 
@@ -289,12 +284,15 @@ class Audio {
 		
 
 		this.interval = setInterval(function(){
-			self.currentPos = self.ctx.currentTime;
-			self.timerElement.text(self.currentPos);
+			self.currentTime = (self.currentTime + 0.1);
 
-			let percent = Math.floor((self.currentPos / self.duration) * 100);
+			self.timerElement.text(self.currentTime.toFixed(3) + 's /' + self.duration.toFixed(3) + 's');
+
+			if (self.currentTime >= self.duration){
+				clearInterval(self.interval);
+				self.currentTime = 0;
+			}
 			
-			self.slider.val(percent);
 
 		}, 100);
 
@@ -318,10 +316,12 @@ class Audio {
 		// ------------------------------------------------
 		// Toggle class
 		//
-		for (let i = 0; i < self.domElements.length; i++ ){
-			self.domElements[i].removeClass('down');
-			self.domElements[i].addClass('up');
-		}
+		self.domElements.removeClass('down').addClass('up');
+
+
+		//send message
+		Events.pubsub.emit('tracks:unmuted', 'muted');
+
 
 		self.currentlyPlaying = true;
 		self.startStopButton.removeClass('off').addClass('on');
@@ -344,10 +344,13 @@ class Audio {
 		// ------------------------------------------------
 		// Toggle class
 		//
-		for (let i = 0; i < self.domElements.length; i++ ){
-			self.domElements[i].classList.remove('up');
-			self.domElements[i].classList.add('down');
-		}
+
+		self.domElements.removeClass('up').addClass('down');
+
+
+		//send message
+		Events.pubsub.emit('tracks:muted', 'muted');
+
 		
 
 		self.currentlyPlaying = false;
@@ -364,65 +367,16 @@ class Audio {
 		ev.stopPropagation();
 
 		if (this.songStarted === false){
-			console.log('starting');
 			this.startSounds(this.currentPos);
+
 		}
 
 		else{
-			console.log('returning');
 			return null;
 		}
 
 
 	}
-
-
-	
-
-	// ------------------------------------------------
-	// Slider start
-	//
-	onSliderMouseDown(ev){
-
-		let self = this;
-		//stop interval
-		clearInterval(self.interval);
-	}
-	
-
-
-	// ------------------------------------------------
-	// Slider change
-	//
-	onSliderMouseUp(ev){
-
-		let self = this;
-
-		//percent in decimal
-		let newPercent = self.slider.val() / 100;
-
-		//turn percent into position
-		let newPos = newPercent * self.duration;
-
-		//restart interval
-		if (self.songStarted){
-			self.currentPos = newPos;
-			self.startTimer();
-		}
-
-		else{
-			self.currentPos = newPos;
-		}
-
-		console.log('newpos', self.currentPos);
-		
-	}
-	
-	
-	
-
-
-	
 }
 
 

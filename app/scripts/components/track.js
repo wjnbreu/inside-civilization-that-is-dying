@@ -8,6 +8,7 @@
 
 const q = require('q');
 const $ = require('jquery');
+const Events = require('./pubsub');
 
 class Track {
 
@@ -28,6 +29,8 @@ class Track {
 		this.loaded = false;
 		this.muted = true;
 		this.currentPos = 0;
+		this.allTracksLoaded = false;
+		this.allMuted = false;
 	}
 
 
@@ -38,6 +41,22 @@ class Track {
 	load(){
 
 		let self = this;
+
+
+		//subscribe to pubsub
+		Events.pubsub.on('tracks:loaded', function(msg){
+			self.allTracksLoaded = true;
+		});
+
+		Events.pubsub.on('tracks:muted', function(msg){
+			self.allMuted = true;
+		});
+
+		Events.pubsub.on('tracks:unmuted', function(msg){
+			self.allMuted = false;
+		});
+
+		
 		let deferred = q.defer();
 
 		let req = new XMLHttpRequest();
@@ -106,33 +125,49 @@ class Track {
 	//
 	onClick(ev){
 
-		console.log("click track");
 
 		let self = this;
 
+		if (self.allTracksLoaded){
 
-		if (self.volume === 0.15){
-			//make sure this triggers after global event listener
-			setTimeout(function(){
-				self.volume = 1;
-				self.gainNode.gain.value = 1;
-				self.domElement.addClass('solo');
-			},100);
 
-			// ------------------------------------------------
-			// Scroll to anchor
-			//
-			self.scrollToAnchor(ev, 800);
+			if (self.allMuted){
+				return null;
+			}
 
+			else{
+
+				if (self.volume === 0.15){
+					//make sure this triggers after global event listener
+					setTimeout(function(){
+						self.volume = 1;
+						self.gainNode.gain.value = 1;
+						self.domElement.addClass('solo');
+					},100);
+
+					// ------------------------------------------------
+					// Scroll to anchor
+					//
+					self.scrollToAnchor(ev, 800);
+
+				}
+
+				else{
+					setTimeout(function(){
+						self.volume = 0.15;
+						self.gainNode.gain.value = self.volume;
+						self.domElement.removeClass('solo');
+					}, 100);
+				}
+			}
 		}
 
 		else{
-			setTimeout(function(){
-				self.volume = 0.15;
-				self.gainNode.gain.value = self.volume;
-				self.domElement.removeClass('solo');
-			}, 100);
+			return null;
 		}
+
+
+		
 
 		
 
@@ -196,7 +231,6 @@ class Track {
 
 		let self = this;
 
-		console.log(pos);
 
 		//start buffer
 		self.bufferSource.start(0, pos);

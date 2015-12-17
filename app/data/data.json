@@ -2,31 +2,31 @@
 	{
 		"name": "Jamal Moss",
 		"id": "jamal",
-		"mp3": "audio/jamal-moss-ipad.mp3"
+		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/jamal-moss-ipad.mp3"
 	},
 	{
 		"name": "Shelley Hirsch",
 		"id": "shelley",
-		"mp3": "audio/shelley-hirsch-vox.mp3"
+		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/shelley-hirsch-vox.mp3"
 	},
 	{
 		"name": "Ben Vida",
 		"id": "ben",
-		"mp3": "audio/ben-vida-synth.mp3"
+		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/ben-vida-synth.mp3"
 	},
 	{
 		"name": "Daniel Carter",
 		"id": "daniel",
-		"mp3": "audio/daniel-carter-sax.mp3"
+		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/daniel-carter-sax.mp3"
 	},
 	{
 		"name": "Greg Fox",
 		"id": "greg",
-		"mp3": "audio/greg-fox-drums.mp3"
+		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/greg-fox-drums.mp3"
 	},
 	{
 		"name": "ref2",
 		"id": "ref",
-		"mp3": "audio/ref.mp3"
+		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/ref.mp3"
 	}
 ]

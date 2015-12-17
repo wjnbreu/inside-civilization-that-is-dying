@@ -1,16 +1,23 @@
 
 .container{
-	position: relative;
-	width: 55%;
-	height: auto;
-	float: right;
-	padding: 0 20px;
-	overflow-x: hidden;
+	
+	width: 90%;
+	margin: auto 5%;
+	@include mq("large"){
+		position: relative;
+		width: 55%;
+		height: auto;
+		float: right;
+		padding: 0 20px;
+		overflow-x: hidden;
+		margin: 0;
+	}
+	
 
 	.title{
 		font-size: 1em;
 		width: 100%;
-		height: 100vh;
+		height: 80vh;
 		text-align: center;
 		@include display(flex);
 		@include flex-direction(column);
@@ -26,16 +33,41 @@
 	}
 
 	.speaker{
+		.mobile-image{
+			width: 100%;
+			background: white;
+			margin: 25px 0;
+			@include mq("large"){
+				display: none;
+			}
+			img{
+				max-width: 100%;
+				width: 100%;
+				padding: 10px;
+			}
+		}
 		h2{
 			background: $text;
 			color: $background;
-			padding: 20px 0;
+			padding: 10px 0;
 			text-align: center;
 			@include uppercase();
-			margin: 70px 0;
-			font-family: 'Times New Roman', serif;
-			@include transform(scaleY(2.5));
+			margin: 40px 0;
+			font-family: 'Portrait', 'Times New Roman', serif;
+			@include transform(scaleY(1.5));
 			letter-spacing: 2px;
+			@include mq("large"){
+				@include transform(scaleY(2.5));
+				padding: 20px 0;
+				margin: 70px 0;
+			}
+		}
+	}
+
+	.desktop-only{
+		display: none;
+		@include mq("large"){
+			display: block;
 		}
 	}
 
