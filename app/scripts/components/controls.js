@@ -147,6 +147,7 @@ class Audio {
 
 			let stem = new Track(
 				this.name,
+				this.part,
 				this.mp3,
 				this.id,
 				self.ctx,

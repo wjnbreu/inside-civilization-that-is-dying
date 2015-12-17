@@ -12,8 +12,9 @@ const Events = require('./pubsub');
 
 class Track {
 
-	constructor(name, mp3, id, ctx, domElement, otherPlayers){
+	constructor(name, part, mp3, id, ctx, domElement, otherPlayers){
 		this.name = name || null;
+		this.part = part || null;
 		this.src = mp3 || null;
 		this.id = id || null;
 		this.ctx = ctx || null;
@@ -145,6 +146,8 @@ class Track {
 						self.domElement.addClass('solo');
 					},100);
 
+					$('#instructions').html('<p>' + self.name + ' / ' + self.part + '</p>');
+
 					// ------------------------------------------------
 					// Scroll to anchor
 					//
@@ -158,6 +161,8 @@ class Track {
 						self.gainNode.gain.value = self.volume;
 						self.domElement.removeClass('solo');
 					}, 100);
+
+					$('#instructions').html('<p></p>');
 				}
 			}
 		}
