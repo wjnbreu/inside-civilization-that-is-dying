@@ -6,6 +6,8 @@ const Track = require('./track');
 const $ = require('jquery');
 const Events = require('./pubsub');
 
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
 
 // -------------------------------------------------
 //

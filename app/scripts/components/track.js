@@ -64,10 +64,14 @@ class Track {
 		req.open('GET', self.src, true);
 		req.responseType = 'arraybuffer';
 
+		console.log(req);
+
 		// ------------------------------------------------
 		// Request load callback
 		//
 		req.onload = function(response){
+
+			console.log(response);
 
 			self.ctx.decodeAudioData(req.response, function(buffer){
 
@@ -94,10 +98,15 @@ class Track {
 			});
 		};
 
+
+		req.onerror = function(err){
+			console.log(err);
+		}
+
 		// ------------------------------------------------
 		// Send request
 		//
-		req.send();
+		req.send(null);
 
 		return deferred.promise;
 
