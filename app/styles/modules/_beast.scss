@@ -26,22 +26,27 @@
 		background-repeat: no-repeat !important;
 		background-blend-mode: hard-light;
 		&.solo{
-			background-blend-mode: difference;
+			background-blend-mode: screen;
 		}
 		&:hover{
 			opacity: 1;
 		}
 		&:after{
 			content: attr(data-fullname);
-			width: 100%;
-			height: 100%;
+			width: 50%;
+			height: 20%;
+			text-align: center;
+			top: 40%;
+			left: 25%;
 			@include display(flex);
 			@include align-items(center);
 			@include justify-content(center);
 			color: $text;
 			position: absolute;
 			font-size: 1em;
-			@include transform(scaleY(2));
+			@include transform(scaleY(1));
+			@include uppercase();
+			font-weight: bold;
 		}
 
 		img{
@@ -76,7 +81,7 @@
 	}
 	.bottom{
 		width: 100%;
-		height: 50%;
+		height: 35%;
 		.player{
 			width: 30.65%;
 			margin: 2% 1% 0 1%;

@@ -4,11 +4,15 @@
 // 
 // -------------------------------------------------
 footer{
-	width: 90%;
+	width: 100%;
 	color: white;
 	font-family: 'maison', Helvetica, Arial;
 	margin-top: 10em;
-	margin-left: 5%;
+	margin-left: 0;
+	@include mq("large"){
+		width: 90%;
+		margin-left: 5%;
+	}
 	img.footer-logo{
 		width: 90%;
 		margin-left: 5%;

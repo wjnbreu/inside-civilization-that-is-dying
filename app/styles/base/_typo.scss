@@ -3,7 +3,7 @@
 // Fonts
 // 
 // -------------------------------------------------
-
+@import url(https://fonts.googleapis.com/css?family=Cousine:400,400italic,700,700italic);
 
 
 // -------------------------------------------------
@@ -11,19 +11,6 @@
 // Typo
 // 
 // -------------------------------------------------
-
-/* Webfont: CloisterBlack-Light */@font-face {
-    font-family: 'CloisterBlack';
-    src: url('../fonts/CloisterBlack-Light.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/CloisterBlack-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/CloisterBlack-Light.woff') format('woff'), /* Modern Browsers */
-         url('../fonts/CloisterBlack-Light.ttf') format('truetype'), /* Safari, Android, iOS */
-         url('../fonts/CloisterBlack-Light.svg#CloisterBlack-Light') format('svg'); /* Legacy iOS */
-    font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
-}
-
 
 /* Webfont: FantasqueSansMono-Regular */@font-face {
     font-family: 'Portrait';
@@ -80,9 +67,9 @@
 // -------------------------------------------------
 
 body{
-	font-family: 'Portrait', 'Times New Roman', serif;
+	font-family: 'cousine', 'Portrait', 'Times New Roman', serif;
 	color: $text;
-	font-size: 18px;
+	font-size: 16px;
     -webkit-font-smoothing: antialiased;
 }
 h1,h2,h3,h4,h5{
@@ -100,14 +87,13 @@ h1{
     @include mq("medium"){
         font-size: 2em;
     }
-    
+
 }
 
 
 p{
 	font-size: 1em;
-	line-height: 1.5;
-
+	line-height: 1.75;
 	@include mq("large"){
 		font-size: 1.1em;
 	}
