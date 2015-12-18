@@ -4,6 +4,10 @@
 	width: 90%;
 	margin: auto 5%;
 	position: relative;
+	@include mq("medium"){
+		width: 80%;
+		margin: auto 10%;
+	}
 	@include mq("large"){
 		position: relative;
 		width: 55%;
@@ -18,7 +22,7 @@
 	.title{
 		font-size: 1em;
 		width: 100%;
-		height: 80vh;
+		height: 100vh;
 		text-align: center;
 		@include display(flex);
 		@include flex-direction(column);
@@ -68,13 +72,12 @@
 	.desktop-only{
 		display: none;
 		@include mq("large"){
-			display: block;
+			display: inline;
 		}
 	}
 
 	.question{
 		font-weight: bold;
-		font-size: 1.5em;
 		line-height: 1.5;
 	}
 

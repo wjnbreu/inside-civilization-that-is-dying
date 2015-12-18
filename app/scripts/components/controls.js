@@ -2,11 +2,10 @@
 
 
 const async = require('async');
-const Track = require('./track');
+const Track = require('./stem');
 const $ = require('jquery');
 const Events = require('./pubsub');
-
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+const Howler = require('howler').Howler;
 
 
 // -------------------------------------------------
@@ -21,10 +20,6 @@ class Audio {
 
 	constructor(){
 
-		// ------------------------------------------------
-		// Global Audio Context instance
-		//
-		this.ctx = null;
 		
 		// ------------------------------------------------
 		// Global ref to current song position
@@ -35,7 +30,9 @@ class Audio {
 		this.currentlyPlaying = false;
 		this.songStarted = false;
 		this.currentPos = 0;
-		this.duration = 0;
+
+		//duration in seconds
+		this.duration = 370.0796;
 
 		this.startStopButton = null;
 
@@ -59,6 +56,9 @@ class Audio {
 		//global mute
 		this.allMuted = false;
 
+		this.scrubber = null;
+		this.scrubValue = 0;
+
 		
 
 	}
@@ -75,8 +75,20 @@ class Audio {
 
 		this.startStopButton = $('#play');
 		this.timerElement = $('#timer');
-		
+		this.scrubber = $('#scrubber');
 		this.domElements = $('.player');
+
+		// ------------------------------------------------
+		// Scrubber listeners
+		//
+		this.scrubber.on('input', function(val){
+			self.handleScrubInput(val);
+		});
+
+		this.scrubber.on('change', function(val){
+			self.handleScrubChange(val);
+		})
+		
 
 
 		this.startStopButton.on('click', function(ev){
@@ -90,17 +102,11 @@ class Audio {
 
 
 
-		
 		// ------------------------------------------------
-		// Test to see if audio context is valid
+		// Grab data
 		//
-		try{
-			self.ctx = new AudioContext();
-			self.fetchData();
-		}
-		catch(err){
-			console.log('No Web Audio API Support', err);
-		}
+		self.fetchData();
+		
 		
 	}
 
@@ -152,7 +158,6 @@ class Audio {
 				this.part,
 				this.mp3,
 				this.id,
-				self.ctx,
 				domElement,
 				self.otherPlayers
 			);
@@ -177,7 +182,6 @@ class Audio {
 			
 			track.load().then(function(response){
 
-				self.duration = track.getDuration();
 
 				//async callback
 				callback();
@@ -233,9 +237,6 @@ class Audio {
 	startSounds(pos){
 		let self = this;
 
-
-		let position = pos || self.currentPos;
-
 		// ------------------------------------------------
 		// If ctx is already started, then just trigger volume change
 		//
@@ -253,13 +254,13 @@ class Audio {
 
 			self.startTimer();
 
-			for (let i = 0; i < self.stems.length; i++ ){
-				let stem = self.stems[i];
-
-				//play with start position as attribute
-				stem.play(position);
-
-			}
+			setTimeout(function(){
+				for (let i = 0; i < self.stems.length; i++ ){
+					//play with start position as attribute
+					self.stems[i].play();
+				}
+			},0);
+			
 
 
 			//set to play
@@ -270,8 +271,6 @@ class Audio {
 
 			//toggle color inversion
 			this.startStopButton.removeClass('off').addClass('on');
-
-			
 
 		}
 
@@ -287,9 +286,16 @@ class Audio {
 		
 
 		this.interval = setInterval(function(){
-			self.currentTime = (self.currentTime + 0.1);
+			self.currentTime = self.stems[0].getPosition();
 
-			self.timerElement.text(self.currentTime.toFixed(3) + 's /' + self.duration.toFixed(3) + 's');
+			self.timerElement.text(self.currentTime.toFixed(4) + 's / ' + self.duration.toFixed(4) + 's');
+
+			//calc percent
+			let percent = Math.floor((self.currentTime / self.duration) * 100);
+
+			//advance scrubber
+			self.scrubber.val(percent);
+
 
 			if (self.currentTime >= self.duration){
 				clearInterval(self.interval);
@@ -313,13 +319,9 @@ class Audio {
 		for (let i = 0; i < self.stems.length; i++ ){
 			let stem = self.stems[i];
 
-			stem.unmute();
+			stem.play();
 		}
 
-		// ------------------------------------------------
-		// Toggle class
-		//
-		self.domElements.removeClass('down').addClass('up');
 
 
 		//send message
@@ -341,14 +343,9 @@ class Audio {
 		for (let i = 0; i < self.stems.length; i++ ){
 			let stem = self.stems[i];
 
-			stem.mute();
+			stem.pause();
 		}
 
-		// ------------------------------------------------
-		// Toggle class
-		//
-
-		self.domElements.removeClass('up').addClass('down');
 
 
 		//send message
@@ -377,9 +374,65 @@ class Audio {
 		else{
 			return null;
 		}
-
-
 	}
+
+
+	// ------------------------------------------------
+	// scrubber change
+	//
+	handleScrubInput(val){
+
+		if (this.currentlyPlaying){
+			//cancel timeout
+			clearInterval(this.interval);
+		}
+
+		else{
+			return;
+		}
+		
+		
+	}
+
+	// ------------------------------------------------
+	// Mouseup on scrubber
+	//
+	handleScrubChange(){
+
+		if (this.currentlyPlaying){
+
+			let self = this;
+
+			let val = this.scrubber.val();
+
+			//turn val to seconds
+			let duration = this.duration;
+
+			let percentDecimal = val / 100;
+
+			let newPos = duration * percentDecimal;
+
+
+			setTimeout(function(){
+				for (let i = 0; i < self.stems.length; i++ ){
+					//play with start position as attribute
+					self.stems[i].setPosition(newPos);
+				}
+			},0);
+
+
+			this.startTimer();
+
+		}
+
+		else{
+			this.scrubber.val(0);
+		}
+
+		
+	}
+	
+	
 }
 
 
