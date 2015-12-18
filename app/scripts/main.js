@@ -2,6 +2,7 @@
 
 const $ = require('jquery');
 const MobileDetect = require('mobile-detect');
+const Headroom = require('headroom.js');
 const Audio = require('./components/controls');
 
 
@@ -16,6 +17,9 @@ class Piece {
 	init(){
 
 		let self = this;
+
+
+		self.setupNav();
 
 		let md = new MobileDetect(window.navigator.userAgent);
 
@@ -35,6 +39,13 @@ class Piece {
 				},500);
 			});
 		}
+	}
+
+
+	setupNav(){
+		let header = document.getElementById('nav');
+		let headroom = new Headroom(header);
+		headroom.init();
 	}
 
 }

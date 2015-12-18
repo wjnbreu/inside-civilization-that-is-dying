@@ -21,9 +21,9 @@
 		position: relative;
 		opacity:0.8;
 		@include transition(all 0.2s linear);
-		background-size: cover;
-		background-position: center center;
-		background-repeat: no-repeat;
+		background-size: cover !important;
+		background-position: center center !important;
+		background-repeat: no-repeat !important;
 		background-blend-mode: hard-light;
 		&.solo{
 			background-blend-mode: difference;

@@ -159,6 +159,13 @@ class Stem {
 						self.domElement.addClass('solo');
 						self.playing = true;
 
+						//swap background
+						// let altBg = $('#item-' + self.id).data('alt');
+
+						// $('#item-' + self.id).css({
+						// 	background: altBg
+						// });
+
 					}, 100);
 
 
@@ -177,6 +184,13 @@ class Stem {
 						self.buf.fade(self.soloVolume, self.quietVolume, 200);
 						self.domElement.removeClass('solo');
 						self.playing = false;
+
+						//swap background
+						// let mainBg = $('#item-' + self.id).data('main');
+
+						// $('#item-' + self.id).css({
+						// 	background: mainBg
+						// });
 
 					}, 100);
 
