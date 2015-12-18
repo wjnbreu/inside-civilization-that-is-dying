@@ -66,7 +66,7 @@ class Stem {
 
 
 		if (this.id === 'ref'){
-			this.volume = 0.10;
+			this.volume = this.soloVolume;
 		}
 
 
@@ -194,7 +194,7 @@ class Stem {
 
 					}, 100);
 
-					$('#instructions').html('<p></p>');
+					$('#instructions').html('<p>Click individual players above to listen to their contributions.</p>');
 				}
 			}
 		}
@@ -227,14 +227,32 @@ class Stem {
 	//
 	
 	scrollToAnchor(ev, scrollDuration){
-		let anchor = ev.target.getAttribute('data-anchor');
+		// let anchor = ev.target.getAttribute('data-anchor');
 
-		$('html,body').animate({
-			scrollTop: $('#' + anchor).offset().top - 100
-		}, scrollDuration);
+		// $('html,body').animate({
+		// 	scrollTop: $('#' + anchor).offset().top - 100
+		// }, scrollDuration);
+		
+		return null;
 
 	}
 
+	// ------------------------------------------------
+	// Turns down the ref track at 30s
+	// called from timer in controls.js
+	//
+	
+	turnRefDown(){
+
+		if (this.id === 'ref'){
+			this.buf.fade(this.soloVolume, this.quietVolume, 5000);
+		}
+
+		else{
+			return;
+		}
+		
+	}
 
 
 	getPosition(){

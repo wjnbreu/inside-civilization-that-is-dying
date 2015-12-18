@@ -27,6 +27,23 @@
 		background-blend-mode: hard-light;
 		&.solo{
 			background-blend-mode: screen;
+			&:after{
+				content: attr(data-fullname-solo);
+				width: 50%;
+				height: 20%;
+				text-align: center;
+				top: 40%;
+				left: 25%;
+				@include display(flex);
+				@include align-items(center);
+				@include justify-content(center);
+				color: $text;
+				position: absolute;
+				font-size: 1em;
+				@include transform(scaleY(1));
+				@include uppercase();
+				font-weight: bold;
+			}
 		}
 		&:hover{
 			opacity: 1;
@@ -43,7 +60,7 @@
 			@include justify-content(center);
 			color: $text;
 			position: absolute;
-			font-size: 1em;
+			font-size: 1;
 			@include transform(scaleY(1));
 			@include uppercase();
 			font-weight: bold;

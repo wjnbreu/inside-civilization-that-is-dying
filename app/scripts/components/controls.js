@@ -59,6 +59,9 @@ class Audio {
 		this.scrubber = null;
 		this.scrubValue = 0;
 
+		//has ref been turned down
+		this.refTurnedDown = false;
+
 		
 
 	}
@@ -294,7 +297,24 @@ class Audio {
 			let percent = Math.floor((self.currentTime / self.duration) * 100);
 
 			//advance scrubber
-			self.scrubber.val(percent);
+			// self.scrubber.val(percent);
+
+			if (Math.floor(self.currentTime) === 35){
+
+				if (self.refTurnedDown === false){
+
+					for (let i = 0; i < self.stems.length; i++ ){
+						let stem = self.stems[i];
+
+						stem.turnRefDown();
+					}
+
+					self.refTurnedDown = true;
+
+				}
+			}
+			
+
 
 
 			if (self.currentTime >= self.duration){
@@ -375,6 +395,7 @@ class Audio {
 			return null;
 		}
 	}
+
 
 
 	// ------------------------------------------------
