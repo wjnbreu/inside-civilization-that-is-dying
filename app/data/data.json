@@ -3,30 +3,35 @@
 		"name": "Jamal Moss",
 		"part": "iPad / electronics",
 		"id": "jamal",
+		"start": 38,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/jamal-moss-ipad.mp3"
 	},
 	{
 		"name": "Shelley Hirsch",
 		"part": "Vocals",
 		"id": "shelley",
+		"start": 36,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/shelley-hirsch-vox.mp3"
 	},
 	{
 		"name": "Ben Vida",
 		"part": "Synths",
 		"id": "ben",
+		"start": 30,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/ben-vida-synth.mp3"
 	},
 	{
 		"name": "Daniel Carter",
 		"part": "Saxophone",
 		"id": "daniel",
+		"start": 48,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/daniel-carter-sax.mp3"
 	},
 	{
 		"name": "Greg Fox",
 		"part": "Drums",
 		"id": "greg",
+		"start": 28,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/greg-fox-drums.mp3"
 	},
 	{

@@ -29,10 +29,44 @@
 		@include align-items(center);
 		@include justify-content(center);
 		cursor: pointer;
-		h1{
+
+		p{
 			//text-decoration: underline;
-			@include transform(scaleY(4));
 			padding: 10px;
+			font-size: 2em;
+			width: 100%;
+			font-family: 'Portrait';
+			text-align: center;
+			font-weight: bold;
+			@include uppercase();
+			&:first-child{
+				@include transform(skew(60deg, -30deg) scaleY(0.666667) translateX(-70px));
+			}
+			&:nth-child(2){
+				top: .46em;
+				@include transform(skew(0deg, -30deg) scaleY(1.33333));
+			}
+			&:nth-child(3){
+				@include transform(skew(60deg, -30deg) scaleY(0.6666667) translateX(20%));
+			}
+			@include mq("medium"){
+				font-size: 3em;
+			}
+			@include mq("large"){
+				font-size: 3.5em;
+				&:first-child{
+					@include transform(skew(60deg, -30deg) scaleY(0.666667) translateX(-70px));
+				}
+				&:nth-child(2){
+					top: .46em;
+					@include transform(skew(0deg, -30deg) scaleY(1.33333));
+				}
+				&:nth-child(3){
+					@include transform(skew(60deg, -30deg) scaleY(0.6666667) translateX(20%));
+				}
+			}
+			
+			
 		}
 		
 
@@ -53,7 +87,7 @@
 			}
 		}
 		h2{
-			border: 2px solid white;
+			//border: 2px solid white;
 			padding: 10px 0;
 			text-align: center;
 			@include uppercase();
@@ -61,10 +95,29 @@
 			font-family: 'Portrait', 'Times New Roman', serif;
 			@include transform(scaleY(1.5));
 			letter-spacing: 2px;
+			@include transform(skew(60deg, -15deg) scaleY(0.666667));
+			font-size: 2em;
+			&.two{
+				@include transform(skew(60deg, 0deg) scaleY(1.1));
+				@include mq("large"){
+					font-size: 4em;
+				}
+				
+			}
+			&.three{
+				@include transform(skew(-40deg, 10deg) scaleY(1.666667));
+			}
+			&.four{
+				@include transform(skew(-40deg, -10deg) scaleY(1));
+			}
+
 			@include mq("large"){
-				@include transform(scaleY(2.5));
 				padding: 20px 0;
-				margin: 100px 0;
+				margin: 50px 0 100px 0;
+				width: 80%;
+				margin-left: 10%;
+				font-size: 3em;
+				
 			}
 		}
 	}

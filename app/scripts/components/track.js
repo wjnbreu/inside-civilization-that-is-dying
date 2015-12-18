@@ -82,11 +82,7 @@ class Track {
 				//get song length in seconds
 				self.duration = buffer.duration;
 
-				//remove loader
-				const loadTarget = $('#' + self.id);
-				if (loadTarget){
-					loadTarget.remove();
-				}
+				
 
 
 				//init all properties

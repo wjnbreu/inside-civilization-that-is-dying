@@ -134,7 +134,7 @@ class Audio {
 				self.initAudio();
 			},	
 			error: function(err){
-				console.log('Error fetching data');
+				console.log('Error fetching data', err);
 			}
 		});
 	}
@@ -162,7 +162,8 @@ class Audio {
 				this.mp3,
 				this.id,
 				domElement,
-				self.otherPlayers
+				self.otherPlayers,
+				this.start
 			);
 
 
@@ -209,10 +210,19 @@ class Audio {
 			// All tracks loaded son!
 			//
 
+			//remove loader
+			const loadTarget = $('.loader');
+		
+			if (loadTarget){
+				loadTarget.remove();
+			}
+
 			//send message
 			Events.pubsub.emit('tracks:loaded', 'loaded');
 
 
+
+			console.log('final load');
 			// ------------------------------------------------
 			// Show audio control bar
 			//
@@ -299,7 +309,7 @@ class Audio {
 			//advance scrubber
 			// self.scrubber.val(percent);
 
-			if (Math.floor(self.currentTime) === 35){
+			if (Math.floor(self.currentTime) >= 35){
 
 				if (self.refTurnedDown === false){
 
@@ -313,9 +323,19 @@ class Audio {
 
 				}
 			}
+
+			//track countdowns
+			if (Math.floor(self.currentTime) <= self.duration){
+
+				for (let i = 0; i < self.stems.length; i++ ){
+					
+					let stem = self.stems[i];
+
+					stem.showCountdown(self.currentTime);
+
+				}
+			}
 			
-
-
 
 			if (self.currentTime >= self.duration){
 				clearInterval(self.interval);

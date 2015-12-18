@@ -70,7 +70,7 @@ html(lang="en")
 				.play.off#play
 			.instructions#instructions
 				p.
-					Click individual players above to listen to their contributions.
+					Click individual players above to toggle their parts.
 
 			//-input.scrubber#scrubber(type="range", value="0", min="0", max="100")
 			
@@ -84,6 +84,7 @@ html(lang="en")
 					data-fullname-solo="Jamal Moss: Solo On",
 					style="background-image: url('images/jamal_moss.jpg')",
 					data-anchor="anchor-jamal")
+					.time-info#time-jamal
 					.loader#jamal
 
 				.player.shelley#item-shelley(data-name="shelley",
@@ -91,6 +92,7 @@ html(lang="en")
 					data-fullname-solo="Shelley Hirsch: Solo On",
 					style="background-image: url('images/shelley_hirsch.jpg')",
 					data-anchor="anchor-shelley")
+					.time-info#time-shelley
 					.loader#shelley
 			
 			.bottom
@@ -99,6 +101,7 @@ html(lang="en")
 					data-fullname-solo="Greg Fox: Solo On",
 					style="background-image: url('images/greg_fox.jpg')",
 					data-anchor="anchor-greg")
+					.time-info#time-greg
 					.loader#greg
 
 				.player.ben#item-ben(data-name="ben",
@@ -106,6 +109,7 @@ html(lang="en")
 					data-fullname-solo="Ben Vida: Solo On",
 					style="background-image: url('images/ben_vida.jpg')",
 					data-anchor="anchor-ben")
+					.time-info#time-ben
 					.loader#ben
 
 				.player.daniel#item-daniel(data-name="daniel",
@@ -113,13 +117,16 @@ html(lang="en")
 					data-fullname-solo="Daniel Carter: Solo On",
 					style="background-image: url('images/daniel_carter.jpg')",
 					data-anchor="anchor-daniel")
+					.time-info#time-daniel
 					.loader#daniel
 
 		//- Main text right panel
 		.container
 
 			.title
-				h1 Inside Civilization That Is Dying
+				p Inside
+				p Civilization
+				p That Is Dying
 				.loader
 
 			.into
@@ -137,7 +144,7 @@ html(lang="en")
 
 			.speaker(id="anchor-jamal")
 				
-				h2 Jamal Moss
+				h2.one Jamal Moss
 
 				.mobile-image
 					img(src="images/jamal_moss.jpg")
@@ -199,7 +206,7 @@ html(lang="en")
 
 			.speaker#anchor-ben
 				
-				h2 Ben Vida
+				h2.two Ben Vida
 
 				.mobile-image
 					img(src="images/ben_vida.jpg")
@@ -242,7 +249,7 @@ html(lang="en")
 
 			.speaker#anchor-shelley
 				
-				h2 Shelley Hirsch
+				h2.three Shelley Hirsch
 
 				.mobile-image
 					img(src="images/shelley_hirsch.jpg")
@@ -276,7 +283,7 @@ html(lang="en")
 					It was such a long time since I'd heard the initial session that I can't tell. I really appreciate what they did, but I recognized that it was different than what I'd sung. I’m curious to see what happens if and when we perform the material, because that'll feel very different.
 
 			.speaker#anchor-greg
-				h2 Greg Fox
+				h2.four Greg Fox
 
 				.mobile-image
 					img(src="images/greg_fox.jpg")
@@ -314,7 +321,7 @@ html(lang="en")
 
 			.speaker#anchor-daniel
 				
-				h2 Daniel Carter
+				h2.five Daniel Carter
 
 				.mobile-image
 					img(src="images/daniel_carter.jpg")

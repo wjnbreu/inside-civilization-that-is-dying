@@ -15,13 +15,14 @@ const Howler = require('howler').Howler;
 
 class Stem {
 
-	constructor( name, part, mp3, id, domElement, otherPlayers ){
+	constructor( name, part, mp3, id, domElement, otherPlayers, startTime ){
 		this.name = name || null;
 		this.part = part || null;
 		this.src = mp3 || null;
 		this.id = id || null;
 		this.domElement = domElement || null;
 		this.otherPlayers = otherPlayers;
+		this.startTime = startTime || 0;
 
 		this.buf = null;
 
@@ -36,6 +37,7 @@ class Stem {
 		this.currentPos = 0;
 		this.allTracksLoaded = false;
 		this.allMuted = false;
+		this.timerVisible = true;
 
 	}
 
@@ -77,15 +79,8 @@ class Stem {
 
 			onload: function(){
 
-				const loadTarget = $('#' + self.id);
-
-				if (loadTarget){
-					loadTarget.remove();
-				}
 
 				self.bindClicks();
-
-
 
 				deferred.resolve('loaded');
 			},
@@ -194,7 +189,7 @@ class Stem {
 
 					}, 100);
 
-					$('#instructions').html('<p>Click individual players above to listen to their contributions.</p>');
+					$('#instructions').html('<p>Click individual players above to toggle their parts.</p>');
 				}
 			}
 		}
@@ -251,6 +246,31 @@ class Stem {
 		else{
 			return;
 		}
+		
+	}
+
+
+	showCountdown(currentTime){
+
+		if (this.timerVisible){
+
+			let timerId = $('#time-' + this.id);
+			let start = this.startTime;
+			let remaining = Math.abs(currentTime - start);
+
+			timerId.text('Starting in ' + remaining.toFixed(4) + 's');
+
+			if (currentTime > start){
+				this.timerVisible = false;
+				timerId.remove();
+			}
+
+		}
+
+		else{
+			return null;
+		}
+
 		
 	}
 
