@@ -4,6 +4,7 @@
 		"part": "iPad / electronics",
 		"id": "jamal",
 		"start": 38,
+		"volume": 0.5,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/jamal-moss-ipad.mp3"
 	},
 	{
@@ -11,6 +12,7 @@
 		"part": "Vocals",
 		"id": "shelley",
 		"start": 36,
+		"volume": 0.5,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/shelley-hirsch-vox.mp3"
 	},
 	{
@@ -18,6 +20,7 @@
 		"part": "Synths",
 		"id": "ben",
 		"start": 30,
+		"volume": 0.8,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/ben-vida-synth.mp3"
 	},
 	{
@@ -25,6 +28,7 @@
 		"part": "Saxophone",
 		"id": "daniel",
 		"start": 48,
+		"volume": 0.4,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/daniel-carter-sax.mp3"
 	},
 	{
@@ -32,11 +36,13 @@
 		"part": "Drums",
 		"id": "greg",
 		"start": 28,
+		"volume": 0.8,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/greg-fox-drums.mp3"
 	},
 	{
 		"name": "ref2",
 		"id": "ref",
+		"volume": 0.5,
 		"mp3": "http://d2gnz4tcuzmut6.cloudfront.net/hieroglyphic-being/reference_isolated.mp3"
 	}
 ]

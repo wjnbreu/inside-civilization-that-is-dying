@@ -15,7 +15,7 @@ const Howler = require('howler').Howler;
 
 class Stem {
 
-	constructor( name, part, mp3, id, domElement, otherPlayers, startTime ){
+	constructor( name, part, mp3, volume, id, domElement, otherPlayers, startTime ){
 		this.name = name || null;
 		this.part = part || null;
 		this.src = mp3 || null;
@@ -28,7 +28,7 @@ class Stem {
 
 		this.alreadyStarted = false;
 		this.playing = false;
-		this.soloVolume = 0.75;
+		this.soloVolume = volume || 0.75;
 		this.quietVolume = 0.01;
 		this.refVolume = 0.5;
 		this.volume = this.quietVolume;

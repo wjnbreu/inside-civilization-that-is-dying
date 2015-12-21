@@ -160,6 +160,7 @@ class Audio {
 				this.name,
 				this.part,
 				this.mp3,
+				this.volume,
 				this.id,
 				domElement,
 				self.otherPlayers,

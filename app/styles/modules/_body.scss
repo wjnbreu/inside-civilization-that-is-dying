@@ -28,6 +28,10 @@
 		overflow-x: hidden;
 		margin: 0;
 	}
+
+	@include mq("widescreen"){
+		padding: 0 50px;
+	}
 	
 
 	.title{
@@ -165,6 +169,18 @@
 		@include mq("large"){
 			display: inline;
 		}
+	}
+
+	.iframe-audio{
+		margin-top: 50px;
+		width: 80%;
+		margin-left: 10%;
+	}
+
+	.iframe-audio-caption{
+		width: 80%;
+		margin-left: 10%;
+		font-size: 0.75em;
 	}
 
 	.question{
