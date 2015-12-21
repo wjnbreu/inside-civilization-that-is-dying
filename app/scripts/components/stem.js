@@ -29,7 +29,8 @@ class Stem {
 		this.alreadyStarted = false;
 		this.playing = false;
 		this.soloVolume = 0.75;
-		this.quietVolume = 0.05;
+		this.quietVolume = 0.01;
+		this.refVolume = 0.5;
 		this.volume = this.quietVolume;
 		this.duration = 0;
 		this.loaded = false;
@@ -240,7 +241,7 @@ class Stem {
 	turnRefDown(){
 
 		if (this.id === 'ref'){
-			this.buf.fade(this.soloVolume, this.quietVolume, 5000);
+			this.buf.fade(this.soloVolume, this.refVolume, 5000);
 		}
 
 		else{
