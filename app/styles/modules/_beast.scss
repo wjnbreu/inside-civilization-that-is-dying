@@ -1,5 +1,6 @@
 .beast{
 	display: none;
+	font-family: 'Cousine', monospace;
 	@include mq("large"){
 		display: block;
 		position: fixed;
@@ -63,7 +64,7 @@
 			font-size: 1;
 			@include transform(scaleY(1));
 			@include uppercase();
-			font-weight: bold;
+			//font-weight: bold;
 		}
 
 		img{

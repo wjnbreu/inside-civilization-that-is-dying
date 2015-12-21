@@ -67,10 +67,16 @@
 // -------------------------------------------------
 
 body{
-	font-family: 'cousine', 'Portrait', 'Times New Roman', serif;
+	font-family: 'maison', 'cousine', 'Portrait', 'Times New Roman', serif;
 	color: $text;
 	font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    @include mq("medium"){
+        font-size: 20px;
+    }
+    @include mq("large"){
+        font-size: 16px;
+    }
 }
 h1,h2,h3,h4,h5{
 	margin: 0;
@@ -93,9 +99,10 @@ h1{
 
 p{
 	font-size: 1em;
-	line-height: 1.75;
+	line-height: 1.5;
 	@include mq("large"){
 		font-size: 1.1em;
+        line-height: 1.75;
 	}
 }
 

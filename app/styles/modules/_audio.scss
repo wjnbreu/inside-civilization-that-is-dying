@@ -52,10 +52,12 @@
 		display: inline-block;
 		margin: 0;
 		padding: 0;
-		@include transform(scaleY(2));
+		//@include transform(scaleY(2));
 		font-size: 0.6em;
 		vertical-align: top;
 		margin-left: 10px;
+		@include uppercase();
+		letter-spacing: 1px;
 		p{
 			line-height: 60px;
 			margin: 0;
@@ -85,12 +87,12 @@
 	.timer{
 		display: inline-block;
 		float: right;
-		font-family: 'Times New Roman', serif;
-		@include transform(scaleY(2));
+		//@include transform(scaleY(2));
 		line-height: 60px;
 		margin: 0;
 		padding: 0;
 		margin-right: 10px;
 		font-size: 0.75em;
+		font-family: 'Cousine', monospace;
 	}
 }
