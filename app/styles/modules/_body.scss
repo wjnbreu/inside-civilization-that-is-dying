@@ -1,3 +1,13 @@
+@include keyframes('jit'){
+	from{
+		@include transform(scaleY(1.5) skew(5deg, -5deg));
+	}
+
+	to{
+		@include transform(scaleY(1.5) skew(15deg, -15deg));
+	}
+}
+
 
 .container{
 	
@@ -54,6 +64,7 @@
 			&:first-child{
 				@include transform(skew(60deg, -30deg) scaleY(0.666667) translateX(0));
 				@include mq("large"){
+
 					@include transform(skew(60deg, -30deg) scaleY(0.666667) translateX(-70px));
 				}
 				
@@ -137,6 +148,7 @@
 			@include transform(scaleY(1.5) skew(5deg, -5deg));
 			letter-spacing: 2px;
 			font-size: 2em;
+			//@include animation('jit' 5s linear infinite alternate-reverse);
 			@include mq("large"){
 				padding: 20px 0;
 				margin: 50px 0;
